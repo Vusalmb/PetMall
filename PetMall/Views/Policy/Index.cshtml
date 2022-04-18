@@ -1,0 +1,79 @@
+﻿@model Setting
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+    <section id="search_area">
+        <span class="search_input"><input type="search" placeholder="What are you looking for?"></span>
+        <button>
+            <span class="header_search">Search</span>
+            <span class="header_icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </button>
+    </section>
+
+    <section id="policy">
+        <div class="policy_container">
+            <h4 class="policy_title">Privacy Policy</h4>
+            <nav class="policy_active">
+                <ul>
+                    <li><a asp-controller="home" asp-action="index">Home</a></li>
+                    <li>Privacy Policy</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section id="policy_info">
+        <div class="policy_info_container">
+            <div class="policy_info1">
+                <h2>Sample Privacy Policy Templat</h2>
+                <p>@Html.Raw(Model.PrivacyPolicy)</p>
+            </div>
+            <div class="policy_info2">
+                <h4>What to Include in Your Privacy Policy</h4>
+                <p>
+                    The content of your Privacy Policy will largely depend on the function of your website, the information gathered and how
+                    you intend to use said information. However, to pass legal standards, all Privacy policies should have these basic
+                    elements within the text.
+                </p>
+            </div>
+            <div class="policy_info3">
+                <h4>Your Business Contact Information</h4>
+                <p>
+                    Your Privacy needs to display your organization details like the legal name, contact details and place of business. Best
+                    practice recommends that this part should appear as the first or the last part of your Privacy Policy for visibility.
+                </p>
+            </div>
+            <div class="policy_info4">
+                <h4>The Type of Data You Will Collect</h4>
+                <p>
+                    This ranges from emails, physical and IP addresses, credit card details, phone numbers or tracking locations. CalOPPA
+                    goes a step further to mandate that commercial or online websites collecting information on California residents must
+                    categorically list the type of personal information collected.
+                </p>
+            </div>
+            <div class="policy_info5">
+                <h4>How You Will Collect the Information</h4>
+                <p>
+                    In addition to filling out forms, you can also collect data automatically through the use of cookies. Internet cookies
+                    are, by far, the easiest way to collect user data since browsers collect and save information from an array of sites
+                    users have previously visited. However, you must also obtain consent from users to use their cookies when collecting
+                    information.
+                </p>
+            </div>
+            <div class="policy_info6">
+                <h4>How You Intend to Use the Data</h4>
+                <p>
+                    A vital element of a Privacy Policy is describing how you intend to use the data collected. This clause is particularly
+                    important if third-parties like advertising programs or fintech companies are in the loop. <br> Will you use the data for
+                    transactional purposes alone or will you also send newsletters to your visitors? Will your company share information
+                    with other third-party entities like merchants? If so, the law legally requires you to list down all the relevant
+                    parties who will also have access to user information alongside your business. <br> In Quora's Privacy Policy, they have
+                    explained in great detail how they intend to use user information, and even further clarifying that they do not sell to
+                    third parties:
+                </p>
+            </div>
+        </div>
+    </section>
+</main>

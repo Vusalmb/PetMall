@@ -1,0 +1,156 @@
+﻿@model List<DogCare>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section Css{
+    <link rel="stylesheet" href="sweetalert2.min.css">
+}
+
+<div class="container">
+    <div class="row">
+        <div class="d-flex justify-content-end mb-2 mt-2">
+            <a asp-controller="dogcare" asp-action="create" class="btn btn-success btn-icon-text">
+                <i class="mdi mdi-upload btn-icon-prepend"></i>
+                Create
+            </a>
+        </div>
+
+        <div class="col-12">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Desc
+                        </th>
+                        <th>
+                            Settings
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (DogCare cares in Model)
+                    {
+                        <tr>
+                            <td>
+                                @cares.Id
+                            </td>
+                            <td>
+                                <img src="~/assets/image/@cares.Image" alt="slider_image" style="width: 70px; height: 70px;" />
+                            </td>
+                            <td>
+                                @Html.Raw(cares.Title)
+                            </td>
+                            @if (Html.Raw(cares.Desc) == null)
+                            {
+                                <td></td>
+                            }
+                            else if (Html.Raw(cares.Desc.Length >= 30) != null)
+                            {
+                                <td>@Html.Raw(cares.Desc.Substring(0, 100))....</td>
+                            }
+                            else
+                            {
+                                <td>@Html.Raw(cares.Desc)</td>
+                            }
+                            <td>
+                                <a asp-controller="dogcare" asp-action="edit" asp-route-id="@cares.Id" class="btn btn-warning btn-icon-text">
+                                    <i class="mdi mdi-file-check btn-icon-append"></i>
+                                    Edit
+                                </a>
+                                <a asp-controller="dogcare" asp-action="delete" asp-route-id="@cares.Id" class="btn btn-danger btn-icon-text delete-item">
+                                    <i class="mdi mdi-alert btn-icon-prepend"></i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-4">
+            <nav aria-label="...">
+                <ul class="pagination d-flex justify-content-center">
+                    @if (ViewBag.CurrentPage == 1)
+                    {
+                        <li class="page-item disabled">
+                            <a class="page-link" asp-controller="dogcare" asp-action="index" asp-route-page="@(ViewBag.CurrentPage-1)">Previous</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-controller="dogcare" asp-action="index" asp-route-page="@(ViewBag.CurrentPage-1)">Previous</a>
+                        </li>
+                    }
+
+                    @for (int i = 1; i <= ViewBag.TotalPage; i++)
+                    {
+                        <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")" style="@(ViewBag.CurrentPage == i ? "pointer-events: none;" : "")">
+                            <a class="page-link" asp-controller="dogcare" asp-action="index" asp-route-page="@i">@i</a>
+                        </li>
+                    }
+
+                    @if (ViewBag.CurrentPage == ViewBag.TotalPage)
+                    {
+                        <li class="page-item disabled">
+                            <a class="page-link" asp-controller="dogcare" asp-action="index" asp-route-page="@(ViewBag.CurrentPage + 1)">Next</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-controller="dogcare" asp-action="index" asp-route-page="@(ViewBag.CurrentPage + 1)">Next</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(".delete-item").click(function (e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var link = $(this).attr("href");
+                    fetch(link).then(response => response.json()).then(data => {
+                        if (data.status == 200) {
+                            location.reload(true);
+                        }
+                        else
+                        {
+                            Swal.fire(
+                                'Not found!',
+                                'Your file has been deleted.',
+                                'Failed'
+                            )
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+}

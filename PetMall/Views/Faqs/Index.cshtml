@@ -1,0 +1,55 @@
+﻿@model List<AskedQuestion>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+    <section id="search_area">
+        <span class="search_input"><input type="search" placeholder="What are you looking for?"></span>
+        <button>
+            <span class="header_search">Search</span>
+            <span class="header_icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </button>
+    </section>
+
+    <section id="faqs">
+        <div class="faqs_container">
+            <h4 class="faqs_title">Page FAQs</h4>
+            <nav class="faqs_active">
+                <ul>
+                    <li><a asp-controller="home" asp-action="index">Home</a></li>
+                    <li>Page FAQs</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section id="faqs_info">
+        <div class="faqs_info_container">
+            <div class="faqs_info_title">
+                <h3>Frequently asked question</h3>
+            </div>
+            <div class="accordion_section">
+                @foreach (AskedQuestion question in Model)
+                {
+                    <div class="accordion accordion1 active">
+                        <div class="accordion_count">
+                            <span>@question.Id</span>
+                        </div>
+                        <div class="accordion_info">
+                            <div class="accordion_title">
+                                <h5>
+                                    @question.Title
+                                    <span><i class="fa-solid fa-plus"></i></span>
+                                </h5>
+                            </div>
+                            <div class="accordion_desc">
+                                <p>@question.Desc</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</main>

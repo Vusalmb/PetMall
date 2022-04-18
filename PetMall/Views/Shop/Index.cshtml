@@ -1,0 +1,393 @@
+﻿@model List<Shop>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["Successed"] != null)
+{
+    <input type="hidden" id="toastrJs" data-successed="@TempData["Successed"]" />
+}
+
+@if (TempData["Verify"] != null)
+{
+    <input type="hidden" id="verifyJs" />
+}
+
+@if (TempData["Verified"] != null)
+{
+    <input type="hidden" id="verifiedJs" />
+}
+
+
+<main>
+    <section id="search_area">
+        <form asp-controller="shop" asp-action="index">
+            <span class="search_input"><input type="text" name="search" placeholder="What are you looking for?"></span>
+            <button style="background-color: transparent" type="submit">
+                <span class="header_search">Search</span>
+                <a style="text-decoration: none; color: black;" class="header_icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+            </button>
+        </form>
+    </section>
+
+    <section id="shop">
+        <div class="shop_container">
+            <h4 class="shop_title">Products</h4>
+            <nav class="shop_active">
+                <ul>
+                    <li><a asp-controller="home" asp-action="index">Home</a></li>
+                    <li>Products</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section id="shopes">
+        <div class="shopes_container">
+            <div class="shop_nav_filter">
+                <div class="nav_filter_icons">
+                    <span data-filter="first" class="filter_list active"><i class="zmdi zmdi-view-week"></i>|</span>
+                    <span data-filter="second" class="filter_list"><i class="zmdi zmdi-pause"></i>|</span>
+                    <span data-filter="third" class="filter_list"><i class="zmdi zmdi-view-headline"></i></span>
+                </div>
+
+                <div class="filter">
+                    <span class="filter_text">sort by</span>
+                    <span class="filter_icon"><i class="fa-solid fa-sort-down"></i></span>
+                </div>
+            </div>
+
+            <div class="shop_filter">
+                <div class="filters">
+                    <div class="filter_title">
+                        <span><i class="zmdi zmdi-tune"></i></span>
+                        <span>Filter by</span>
+                    </div>
+                    <div class="filter_clear">
+                        <span><i class="zmdi zmdi-delete"></i></span>
+                        <span>Clear all</span>
+                    </div>
+                    <div class="filter_type">
+                        <div class="filter_type_title">
+                            <span><i class="zmdi zmdi-format-subject"></i></span>
+                            <span>Filter Type</span>
+                        </div>
+
+                        <div class="filter_type_list">
+                            <ul>
+                                <li>Chihuahua</li>
+                                <li>Corgy</li>
+                                <li>Pug</li>
+                                <li>Shiba Inu</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter_vendor">
+                        <div class="filter_vendor_title">
+                            <span><i class="zmdi zmdi-format-subject"></i></span>
+                            <span>Filter Vendor</span>
+                        </div>
+
+                        <div class="filter_vendor_list">
+                            <ul>
+                                <li>Canada Pooch</li>
+                                <li>Chuckit</li>
+                                <li>Cloud Star</li>
+                                <li>Dogswell</li>
+                                <li>nov olive 1</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter_price">
+                        <div class="filter_price_title">
+                            <span><i class="zmdi zmdi-format-subject"></i></span>
+                            <span>By Price</span>
+                        </div>
+
+                        <div class="filter_price_list">
+                            <ul>
+                                <li>$10-$20</li>
+                                <li>$20-$40</li>
+                                <li>$40-$60</li>
+                                <li>$60-$80</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter_color">
+                        <div class="filter_color_title">
+                            <span>By Color</span>
+                        </div>
+
+                        <div class="filter_color_list">
+                            <span class="color filter_color1"></span>
+                            <span class="color filter_color2"></span>
+                            <span class="color filter_color3"></span>
+                            <span class="color filter_color4"></span>
+                            <span class="color filter_color5"></span>
+                            <span class="color filter_color6"></span>
+                            <span class="color filter_color7"></span>
+                            <span class="color filter_color8"></span>
+                            <span class="color filter_color9"></span>
+                            <span class="color filter_color10"></span>
+                            <span class="color filter_color11"></span>
+                            <span class="color filter_color12"></span>
+                        </div>
+                    </div>
+                    <div class="filter_size">
+                        <div class="filter_size_title">
+                            <span>Filter Type</span>
+                        </div>
+
+                        <div class="filter_size_list">
+                            <span>S</span>
+                            <span>M</span>
+                            <span>L</span>
+                            <span>XL</span>
+                        </div>
+                    </div>
+                    <div class="filter_tags">
+                        <div class="filter_tags_title">
+                            <span><i class="zmdi zmdi-label"></i></span>
+                            <span>By Tags</span>
+                        </div>
+
+                        <div class="filter_tags_list">
+                            <span>$10-$20</span>
+                            <span>$20-$30</span>
+                            <span>$20-$40</span>
+                            <span>$40-$60</span>
+                            <span>$60-$80</span>
+                            <span>300g</span>
+                            <span>400g</span>
+                            <span>500g</span>
+                            <span>550g</span>
+                            <span>Black</span>
+                            <span>Brown</span>
+                            <span>Darkslateblue</span>
+                            <span>Gray</span>
+                            <span>Honeydew</span>
+                            <span>Lightblue</span>
+                            <span>Orange</span>
+                            <span>Red</span>
+                            <span>White</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="justify-content: flex-start;" class="shop_cards">
+                    <div class="cards">
+                        @foreach (Shop shops in Model)
+                        {
+                            <div class="card card1 first">
+                                <div class="card_image">
+                                    <a target="_blank" asp-controller="shop" asp-action="detail" asp-route-id="@shops.Id"><img src="~/assets/image/@shops.Image" alt="" width="320" height="320"></a>
+                                    <div class="card_buttons">
+                                        <span class="button_detail">
+                                            <a target="_blank" asp-controller="shop" asp-action="detail" asp-route-id="@shops.Id"><i class="fa fa-light fa-eye"></i></a>
+                                        </span>
+                                        <span class="button_notify">
+                                            <a asp-controller="shop" asp-action="addbasket" asp-route-id="@shops.Id"><i class="fa fa-light fa-bag-shopping"></i></a>
+                                        </span>
+                                        <span class="button_wishlist">
+                                            <a target="_blank" asp-controller="shop" asp-action="wish" asp-route-id="@shops.Id"><i class="fa fa-light fa-heart"></i></a>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="card_desc">
+                                    <span class="card_title"><a target="_blank" asp-controller="shop" asp-action="detail" asp-route-id="@shops.Id">@shops.Title</a></span>
+                                    <span class="card_price" data-id="@shops.Id">$@shops.Price</span>
+                                </div>
+                            </div>
+                        }
+
+                        @foreach (Shop shops in Model)
+                        {
+                            <div class="card card2 second">
+                                <div class="card_image">
+                                    <a target="_blank" asp-controller="shop" asp-action="detail" asp-route-id="@shops.Id"><img src="~/assets/image/@shops.Image" alt="" width="500" height="500"></a>
+                                    <div class="card_buttons">
+                                        <span class="button_detail">
+                                            <a target="_blank" asp-controller="shop" asp-action="detail" asp-route-id="@shops.Id"><i class="fa fa-light fa-eye"></i></a>
+                                        </span>
+                                        <span class="button_notify">
+                                            <a asp-controller="shop" asp-action="addbasket" asp-route-id="@shops.Id"><i class="fa fa-light fa-bag-shopping"></i></a>
+                                        </span>
+                                        <span class="button_wishlist">
+                                            <a target="_blank" asp-controller="shop" asp-action="wish" asp-route-id="@shops.Id"><i class="fa fa-light fa-heart"></i></a>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="card_desc">
+                                    <span class="card_title"><a target="_blank" asp-controller="shop" asp-action="detail" asp-route-id="@shops.Id">@shops.Title</a></span>
+                                    <span class="card_price">$@shops.Price</span>
+                                </div>
+                            </div>
+                        }
+
+                        @foreach (Shop shops in Model)
+                        {
+                            <div class="card3 third">
+                                <div class="card">
+                                    <a target="_blank" asp-controller="shop" asp-action="detail" asp-route-id="@shops.Id"><img src="~/assets/image/@shops.Image" alt="" width="250" height="250"></a>
+
+                                    <div class="card_desc">
+                                        <span class="card_title"><a target="_blank" asp-controller="shop" asp-action="detail" asp-route-id="@shops.Id">@shops.Title</a></span>
+                                        <span class="card_price">$@shops.Price</span>
+                                        <p>@shops.Desc</p>
+                                        <div class="card_buttons">
+                                            <span class="button_detail">
+                                                <a target="_blank" asp-controller="shop" asp-action="detail" asp-route-id="@shops.Id"><i class="fa fa-light fa-eye"></i></a>
+                                            </span>
+                                            <span class="button_notify">
+                                                <a asp-controller="shop" asp-action="addbasket" asp-route-id="@shops.Id"><i class="fa fa-light fa-bag-shopping"></i></a>
+                                            </span>
+                                            <span class="button_wishlist">
+                                                <a target="_blank" asp-controller="shop" asp-action="wish" asp-route-id="@shops.Id"><i class="fa fa-light fa-heart"></i></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="cards_pagination">
+                        <nav aria-label="...">
+                            <ul class="pagination d-flex justify-content-center">
+                                @if (ViewBag.CurrentPage == 1)
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link" asp-controller="shop" asp-action="index" asp-route-page="@(ViewBag.CurrentPage-1)">Previous</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" asp-controller="shop" asp-action="index" asp-route-page="@(ViewBag.CurrentPage-1)">Previous</a>
+                                    </li>
+                                }
+
+                                @for (int i = 1; i <= ViewBag.TotalPage; i++)
+                                {
+                                    <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")" style="@(ViewBag.CurrentPage == i ? "pointer-events: none;" : "")">
+                                        <a class="page-link" asp-controller="shop" asp-action="index" asp-route-page="@i">@i</a>
+                                    </li>
+                                }
+
+                                @if (ViewBag.CurrentPage == ViewBag.TotalPage)
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link" asp-controller="shop" asp-action="index" asp-route-page="@(ViewBag.CurrentPage + 1)">Next</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" asp-controller="shop" asp-action="index" asp-route-page="@(ViewBag.CurrentPage + 1)">Next</a>
+                                    </li>
+                                }
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            if ($("#toastrJs").length) {
+                if ($("#toastrJs").attr("data-successed").toLowerCase() == "true") {
+                    Command: toastr["success"]("Your order has been successfully created")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                            else {
+                        Command: toastr["error"]("Baket is empty")
+
+                        toastr.options = {
+                            "closeButton": false,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": false,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                    }
+                }
+            }
+
+            if ($("#verifyJs").length) {
+                Command: toastr["success"]("Please verify your email")
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            }
+
+            if ($("#verifiedJs").length) {
+                Command: toastr["success"]("Your email has been verified")
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            }
+        })
+    </script>
+}

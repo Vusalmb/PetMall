@@ -1,0 +1,63 @@
+﻿@model Setting
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Logo
+                        </th>
+                        <th>
+                            Logo Image
+                        </th>
+                        <th>
+                            Logo Desc
+                        </th>
+                        <th>
+                            Settings
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Model.Id
+                        </td>
+                        <td>
+                            <img src="~/assets/image/@Model.Logo" alt="logo_image" style="width: 200px; height: 100px;" />
+                        </td>
+                        <td>
+                            <img src="~/assets/image/@Model.LogoImage" alt="logo_image" style="width: 100px; height: 100px;" />
+                        </td>
+                        @if (Model.LogoDesc == null)
+                        {
+                            <td></td>
+                        }
+                        else if (Model.LogoDesc.Length >= 50)
+                        {
+                            <td>@Model.LogoDesc.Substring(0, 50)....</td>
+                        }
+                        else
+                        {
+                            <td>@Model.LogoDesc</td>
+                        }
+                        <td>
+                            <a asp-controller="setting" asp-action="edit" asp-route-id="@Model.Id" class="btn btn-warning btn-icon-text">
+                                <i class="mdi mdi-file-check btn-icon-append"></i>
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

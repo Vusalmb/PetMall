@@ -1,0 +1,75 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="d-flex flex-direction-column ml-5">
+    <ul>
+        <li>Fullname: @Model.AppUser.FullName</li>
+        <li>Email: @Model.AppUser.Email</li>
+        <li>Country: @Model.Country</li>
+        <li>State: @Model.State</li>
+        <li>Address: @Model.Address</li>
+        <li>Date: @Model.Date.ToString("dd MMMM yyyy HH:mm")</li>
+        <li>
+            <h3>Order Items</h3>
+            <ul>
+                @foreach (OrderItem item in Model.OrderItems)
+                {
+                    <li>@item.Name</li>
+                    <li>$@item.Price</li>
+                    <hr />
+                }
+            </ul>
+        </li>
+        <li>
+            @if (Model.Status == null)
+            {
+                <span style="display: inline-block; padding: 5px; font-weight: bold; background-color:orange;">Pending</span>
+            }
+            else if (Model.Status == true)
+            {
+                <span style="display: inline-block; padding: 5px; font-weight: bold; background-color: green;">Accepted</span>
+            }
+            else
+            {
+                <span style="display: inline-block; padding: 5px; font-weight: bold; background-color: red;">Rejected</span>
+            }
+        </li>
+        <li>Total price: $@Model.TotalPrice</li>
+    </ul>
+
+    <a asp-controller="order" asp-action="accept" asp-route-id="@Model.Id" class="btn btn-success btn-icontext">
+        <i class="mdi mdi-file-check btn-icon-append"></i>
+        Accept
+    </a>
+    <a asp-controller="order" asp-action="reject" asp-route-id="@Model.Id" class="btn btn-danger btn-icontext">
+        <i class="mdi mdi-file-check btn-icon-append"></i>
+        Reject
+    </a>
+    <h4>Message</h4>
+    <form method="post">
+        <textarea name="Message" cols="60" rows="10"></textarea>
+    </form>
+</div>
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () {
+            $(".accept").click(function (e) {
+                e.preventDefault();
+                var message = $(".Message").val();
+                var link = $(this).attr("href") + "/?message=" + message;
+                fetch(link).then(res => res.json()).then(data => {
+                    if (data.status == 200) {
+                        location.href = "https://localhost:44343/manage/order/index";
+                    }
+                    else {
+
+                    }
+                })
+            })
+        })
+    </script>
+}

@@ -1,0 +1,169 @@
+﻿@model HomeVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+    <section id="search_area">
+        <span class="search_input"><input type="search" placeholder="What are you looking for?"></span>
+        <button>
+            <span class="header_search">Search</span>
+            <span class="header_icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </button>
+    </section>
+
+    <section id="slide_image">
+        <div id="slide_dogs">
+            <div class="images owl-carousel owl-theme">
+                @foreach (Slider slider in Model.Sliders)
+                {
+                    <div class="dogs">
+                        <div class="slide_info_1">
+                            <p>Feature</p>
+                            <h1>@Html.Raw(slider.Title)</h1>
+                        </div>
+                        <img src="~/assets/image/@slider.Image" alt="dog_slide_image" width="100%">
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section id="dogs_img">
+        <div id="dogs_img_container">
+            @foreach (var item in ViewBag.ShopOrder)
+            {
+                <div class="dogs_img_items dogs_img_item_1">
+                    <span class="img_item"><img src="~/assets/image/@item.Image" alt="mobility_bites" width="150"></span>
+                    <span class="text_item text-center">@item.Title</span>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section id="dogs_provide">
+        <div class="dogs_provide_container">
+            @foreach (Provide provide in Model.Provides)
+            {
+                <div class="dogs_provide_row_1 mb-3">
+                    <div class="dogs_provide_img_1">
+                        <img src="~/assets/image/@provide.Image" alt="">
+                    </div>
+
+                    <div class="dogs_provide_detail_1">
+                        <div class="dogs_provide_title_1">
+                            <h2>@provide.Title</h2>
+                        </div>
+
+                        <div class="dogs_provide_desc_1">
+                            <p>
+                                @Html.Raw(provide.Desc)
+                            </p>
+                        </div>
+
+                        <div class="dogs_provide_shop_1">
+                            <button>
+                                <a asp-controller="shop" asp-action="index">Shop Now</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section id="owl_slides">
+        <div class="owl_container owl-carousel owl-theme">
+            @foreach (DogCare care in Model.DogCares)
+            {
+                <div class="item owl_slide">
+                    <div class="owl_img">
+                        <img src="~/assets/image/@care.Image" alt="" width="800" height="500">
+                    </div>
+
+                    <div class="owl_desc_1">
+                        <h1>@Html.Raw(care.Title)</h1>
+                        <p>@Html.Raw(care.Desc)</p>
+                        <button>
+                            <a asp-controller="shop" asp-action="index">Shop Now</a>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section id="dogs_news">
+        <div class="dogs_news_container">
+            <div class="dogs_news_title">
+                <h2>Latest News</h2>
+                <p>Nonummy minima praesentium, dicta quae auctor accusantium!</p>
+            </div>
+
+            <div class="dogs_news_slide owl-carousel owl-theme">
+                @foreach (var item in ViewBag.BlogOrder)
+                {
+                    <div class="item item-1">
+                        <div class="image">
+                            <img src="~/assets/image/@item.Image" alt="" width="482" height="482">
+                            <a target="_blank" asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">
+                                <span>
+                                    <svg width="42" height="40" viewBox="0 0 42 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20.6893 13.9784C23.6396 13.9784 26.0313 11.0731 26.0313 7.48922C26.0313 3.90532 23.6396 1 20.6893 1C17.739 1 15.3473 3.90532 15.3473 7.48922C15.3473 11.0731 17.739 13.9784 20.6893 13.9784Z" stroke="black" stroke-width="2"></path>
+                                        <path d="M39.6993 15.7877C37.687 18.7799 34.0592 19.9112 31.5989 18.3178C29.1375 16.7244 28.7725 13.0082 30.7866 10.0177C32.7978 7.02768 36.4256 5.89471 38.887 7.48868C41.3478 9.08048 41.7128 12.7977 39.6993 15.7877Z" stroke="black" stroke-width="2"></path>
+                                        <path d="M2.30135 14.9596C4.31318 17.9517 7.94088 19.0825 10.4017 17.4896C12.8632 15.8962 13.2281 12.18 11.2136 9.18949C9.20173 6.19951 5.57458 5.06654 3.11316 6.66051C0.652291 8.25231 0.286756 11.9696 2.30135 14.9596Z" stroke="black" stroke-width="2"></path>
+                                        <path d="M35.2886 33.6012C36.3481 28.1587 32.3864 23.5623 28.0066 21.1304C25.6857 19.8369 23.3116 18.6985 20.5682 18.75C17.5604 18.8021 14.4475 20.5615 12.126 22.2173C8.48559 24.8564 4.52829 31.5316 7.69424 35.7224C9.11878 37.5853 12.126 39.2926 14.6062 38.9309C17.139 38.5686 19.2493 35.7224 21.8351 36.0326C24.3673 36.3433 26.3189 38.6717 28.7991 38.9819C31.1128 39.2769 34.839 35.9035 35.2886 33.6012Z" stroke="black" stroke-width="2"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="date">
+                            <span>@item.Date.ToString("dd MMMM yyyy")</span>
+                        </div>
+
+                        <div class="desc">
+                            <p><a target="_blank" asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">@item.Title</a></p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section id="join">
+        <div class="join_container">
+            <div class="join_title">
+                <span>@Html.Raw(Model.Setting.InstagramIcon)</span>
+                <h2>Instagram</h2>
+            </div>
+
+            <div class="join_image">
+                @foreach (Join join in Model.Joins)
+                {
+                    <div class="item item-1">
+                        <img src="~/assets/image/@join.Image" alt="" width="261.2" height="261.2">
+                        <span>@Html.Raw(join.Icon)</span>
+                    </div>
+                }
+            </div>
+
+            <div class="join_desc">
+                <h5>Join Our Community</h5>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div class="join_image_popup_container">
+    <div class="join_image_popup_exit">
+        <span><i class="fa-solid fa-xmark"></i></span>
+    </div>
+
+    <div class="join_image_popup owl-carousel owl-theme">
+        @foreach (Join join in Model.Joins)
+        {
+            <div class="popup_image1"><img src="~/assets/image/@join.Image" alt=""></div>
+        }
+    </div>
+</div>

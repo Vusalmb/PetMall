@@ -1,0 +1,376 @@
+﻿@model Shop
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<main>
+    <section id="search_area">
+        <span class="search_input"><input type="search" placeholder="What are you looking for?"></span>
+        <button>
+            <span class="header_search">Search</span>
+            <span class="header_icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </button>
+    </section>
+
+    <section id="shop_detail">
+        <div class="shop_detail_container">
+            <h4 class="shop_detail_title">Product details</h4>
+            <nav class="shop_detail_active">
+                <ul>
+                    <li><a asp-controller="home" asp-action="index">Home</a></li>
+                    <li>Product details</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section id="product_detail">
+        <div class="product_detail_container">
+            <div class="product_detail_image">
+                <img src="~/assets/image/@Model.Image" alt="" width="650" height="700">
+            </div>
+
+            <div class="product_detail_desc">
+                <div class="product_detail_title">
+                    <h4>@Model.Title</h4>
+                </div>
+
+                <div class="product_detail_price">
+                    <span class="price">$@Model.Price</span>
+                    <span class="reviews">
+                        <i class="fa-solid fa-star-of-david"></i>
+                        <i class="fa-solid fa-star-of-david"></i>
+                        <i class="fa-solid fa-star-of-david"></i>
+                        <i class="fa-solid fa-star-of-david"></i>
+                        <i class="fa-solid fa-star-of-david"></i>
+                    </span>
+                </div>
+
+                <div class="product_detail_text">
+                    <p>@Model.Desc</p>
+                </div>
+
+                <div class="product_detail_options">
+                    <div class="option1">
+                        <span class="tag_title">Tags:</span>
+                        <span class="tags">
+                            @foreach (ShopTag tags in Model.ShopTags)
+                            {
+                                <span>@tags.Tag.Name,</span>
+                            }
+                        </span>
+                    </div>
+
+                    <div class="option2">
+                        <span class="sku_title">Sku:</span>
+                        <span class="weight">@Model.SKUCode</span>
+                    </div>
+
+                    <div class="option3">
+                        <span class="category_title">Category:</span>
+                        <span class="category">
+                            @foreach (ShopCategory categories in Model.ShopCategories)
+                            {
+                                <span>@categories.Category.Name,</span>
+                            }
+                        </span>
+                    </div>
+                </div>
+
+                <div class="product_detail_size">
+                    <div class="size_title">
+                        <span>Size: @Model.ShopSize.Name</span><br />
+                        <span>Weight: @Model.Weight</span>
+                    </div>
+                </div>
+
+                <div class="product_detail_notes">
+                    <div class="notes_title">
+                        <span>Notes:</span>
+                    </div>
+
+                    <div class="notes">
+                        <form action="" method="post">
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Write here your notes for the order"></textarea>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="product_detail_quantity">
+                    <div class="quantity_title">
+                        <span>Quantity:</span>
+                    </div>
+
+                    <div class="quantity_option">
+                        <div class="quantity">
+                            <span>-</span>
+                            <span class="count">1</span>
+                            <span>+</span>
+                        </div>
+
+                        <div class="add_card">
+                            <a asp-controller="shop" asp-action="addbasket" asp-route-id="@Model.Id" style="text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; border-radius: 20px; background-color: orange; color: white; font-family: Montserrat, sans-serif; font-weight: bold;" onMouseOver="this.style.backgroundColor='#ff8c00'" onMouseOut="this.style.backgroundColor='orange'"><span>Add To Card</span></a>
+                        </div>
+                    </div>
+
+                    <div class="product_by">
+                        <a href="" style="text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; border-radius: 20px; background-color: orange; color: white; font-family: Montserrat, sans-serif; font-weight: bold;" onMouseOver="this.style.backgroundColor='#ff8c00'" onMouseOut="this.style.backgroundColor='orange'"><span>By It Now</span></a>
+                    </div>
+                </div>
+
+                <div class="product_detail_payment">
+                    <div class="payment_title">
+                        <span>Guaranted Safe Checkout:</span>
+                    </div>
+
+                    <div class="payment_image">
+                        <img src="~/assets/image/payment_detail.png" alt="">
+                    </div>
+                </div>
+
+                <div class="product_detail_contact">
+                    <div class="contacts">
+                        <div class="share">
+                            <span class="share_title">
+                                <i class="fa-solid fa-share-nodes"></i>
+                                Share:
+                            </span>
+                            <span class="social">
+                                <a href="https://www.facebook.com/vinovatheme">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                    <span>Facebook</span>
+                                </a>
+                                <a href="https://twitter.com/vinovatheme">
+                                    <i class="fa-brands fa-twitter"></i>
+                                    <span>Tweeter</span>
+                                </a>
+                                <a href="https://www.pinterest.com/vinovatheme/">
+                                    <i class="fa-brands fa-pinterest-p"></i>
+                                    <span>Pinterest</span>
+                                </a>
+                            </span>
+                        </div>
+
+                        <div class="shopping_time">
+                            <span>
+                                <i class="zmdi zmdi-time"></i>
+                                Orders ship within 5 to 10 business days.
+                            </span>
+                        </div>
+
+                        <div class="shopping_truck">
+                            <span>
+                                <i class="zmdi zmdi-truck"></i>
+                                <strong>Hoorey !</strong> This item ships free to the US
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product_detail_tabs">
+        <div class="tabs_container">
+            <div class="header_container">
+                <ul>
+                    <li data-id="description" class="active">Description</li>
+                    <li data-id="delivery">Delivery Policy</li>
+                    <li data-id="exchange">Returns & Exchanges Policy</li>
+                    <li data-id="review">Customer Reviews</li>
+                </ul>
+            </div>
+
+            <div class="bottom_container">
+                <div class="tab1 description">
+                    <p>
+                        Captivate with this shirt’s versatile urban look that works as well at happy hour as it does in the back yard. The real
+                        mother of pearl buttons and embroidered crocodile complete its elegant appeal.Lorem ipsum dolor sit amet, consectetuer
+                        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
+                        montes, nascetur ridicu lus mus. Donec quam felis, ultri cies nec, pellentesque eu, pretium quis, sem. Nulla consequat
+                        massa quis enim.
+                    </p>
+
+                    <div class="tab_image">
+                        <img src="~/assets/image/tab_img.png" alt="">
+                    </div>
+
+                    <ul>
+                        <li>MACHINE WASH AT MAX.TEMP. 30° C - NORMAL PROCESS</li>
+                        <li>DO NOT BLEACH</li>
+                        <li>DO NOT TUMBLE DRY</li>
+                        <li>IRON AT MAX. TEMP. OF 110° C WITHOUT STEAM</li>
+                        <li>DO NOT DRY CLEAN</li>
+                    </ul>
+
+                    <div class="sample_ordered">
+                        <span>Sample Ordered Lista</span>
+                        <ol>
+                            <li>Comodous in tempor ullamcorper miaculis</li>
+                            <li>Pellentesque vitae neque mollis urna mattis laoreet.</li>
+                            <li>Divamus sit amet purus justo.</li>
+                            <li>Proin molestie egestas orci ac suscipit risus posuere loremous</li>
+                        </ol>
+                    </div>
+
+                    <div class="sample_paragraph">
+                        <span>Sample Paragraph Text</span>
+                        <p>
+                            Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a
+                            straw hat and you're ready for summer!Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a
+                            comfortable fit. Accessorize with a straw hat and you're ready for summe!Aenean massa. Cum sociis natoque penatibus et
+                            magnis dis parturient montes, nascetur ridicu lus mus. Donec quam felis, ultri cies nec, pellentesque eu, pretium quis,
+                            sem. Nulla consequat massa quis enim.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tab2 delivery">
+                    <span>Lorem ipsum dolor sit amet</span>
+
+                    <p>
+                        Vivamus a placerat dolor. Proin ut vehicula mauris. Etiam sagittis augue ipsum. Aliquam vestibulum massa nulla,
+                        ullamcorper aliquam diam feugiat vel. Fusce porttitor ultrices ante, posuere vehicula lacus tempor eu. Sed et purus et
+                        massa mattis aliquet ac vel dolor. Pellentesque eros lectus, placerat nec finibus ac, lobortis eu risus.
+                        Donec fringilla metus ligula, sit amet fermentum ex laoreet non
+                    </p>
+
+                    <ul>
+                        <li>- Ribbed and double stitched collar and armholes</li>
+                        <li>- High-density fabric for vivid print clarity</li>
+                        <li>- Machine-wash safeSingle right rear button flap pocket</li>
+                        <li>- Products are proudly printed in the United States</li>
+                    </ul>
+
+                    <p>
+                        Curabitur egestas suscipit odio. Nam vitae aliquam dui
+                        in laoreet elit. In posuere augue id velit placerat, vitae porttitor leo aliquet. Aenean non ligula sed lorem eleifend
+                        aliquam. Morbi posuere faucibus viverra. Proin ullamcorper, lorem lacinia cursus finibus.
+                    </p>
+                </div>
+
+                <div class="tab3 exchange">
+                    <span>Nullam at mi accumsan, fermentum turpis at, hendrerit tortor</span>
+
+                    <p>
+                        Vivamus commodo magna rutrum ipsum convallis luctus. Maecenas sollicitudin tincidunt sem at consectetur. Sed ligula
+                        elit, sodales feugiat porttitor non, commodo in ipsum. Donec vehicula orci et pharetra laoreet. Donec feugiat, nibh ac
+                        ornare hendrerit, dui augue semper felis, a finibus dui felis quis magna. Curabitur a ligula purus. Suspendisse
+                        vestibulum lorem non tellus aliquet blandit. <br>
+                        Proin cursus sollicitudin scelerisque. Donec ultrices elit quis magna lobortis porttitor. Quisque et consectetur mauris.
+                        Sed facilisis malesuada ante eget blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+                        inceptos himenaeos. Pellentesque rutrum mattis ex ac sagittis. Nulla convallis euismod ipsum, a mollis sapien fringilla
+                        eget. Nam dignissim ornare nisi, in bibendum nibh auctor id. <br>
+                        Quisque dictum justo id velit dapibus, id mollis diam tincidunt. Donec luctus tincidunt ultrices. Sed condimentum ante
+                        accumsan, sagittis lorem quis, dictum enim. Nam et facilisis odio. Ut iaculis dui non interdum accumsan. Lorem ipsum
+                        dolor sit amet, consectetur adipiscing elit. Fusce lacus sem, molestie non convallis nec, tristique a lacus. Proin eget
+                        lacus semper dui imperdiet accumsan. Morbi sagittis erat ac justo congue, a ornare tortor mollis. Aenean eu vulputate
+                        diam. Praesent suscipit ex non elit finibus ultricies. <br>
+                    </p>
+                </div>
+
+                <div class="tab4 review">
+                    <div class="customer">
+                        <div class="customer_title">
+                            <h3>Customer Reviews (@Model.Comments.Count())</h3>
+                        </div>
+
+                        <div class="customer_summary">
+                            @if (Model.Comments == null)
+                            {
+                                <span class="summary1">No reviews yet</span>
+                                <span class="summary2">Write a review</span>
+                            }
+                            else
+                            {
+                                @foreach (Comment comment in Model.Comments.Where(c => c.IsAccess == true).OrderBy(c => c.CreateDate))
+                                {
+                                    @if (comment.AppUser.UserName == User.Identity.Name)
+                                    {
+                                        <span>@comment.AppUser.FullName</span> <span>@comment.CreateDate.ToString("dd   MMMM yyyy HH:mm")</span>
+                                        <p>@comment.Text</p>
+                                        <a asp-action="DeleteComment" asp-route-id="@comment.Id" calss="text-danger" style="text-decoration: none; color: black;">Delete</a>
+                                    }
+
+                                }
+
+                                <span class="summary2">Write a review</span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="form_container">
+                        <form asp-controller="shop" asp-action="addcomment" method="post">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Enter your Name">
+
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="john.smith@example.com">
+
+                            <div class="rating">
+                                <span>Rating</span>
+                                <label for="radio1"><i class="fa-solid fa-star-of-david"></i></label>
+                                <input type="radio" id="radio1">
+                                <label for="radio2"><i class="fa-solid fa-star-of-david"></i></label>
+                                <input type="radio" id="radio2">
+                                <label for="radio3"><i class="fa-solid fa-star-of-david"></i></label>
+                                <input type="radio" id="radio3">
+                                <label for="radio4"><i class="fa-solid fa-star-of-david"></i></label>
+                                <input type="radio" id="radio4">
+                                <label for="radio5"><i class="fa-solid fa-star-of-david"></i></label>
+                                <input type="radio" id="radio5">
+                            </div>
+
+                            <label asp-for="@Model.Comment.Title">Review Title</label>
+                            <input type="text" asp-for="@Model.Comment.Title">
+
+                            <label asp-for="@Model.Comment.Text">Body of Review (1500)</label>
+                            <textarea asp-for="@Model.Comment.Text" cols="30" rows="10" placeholder="Write your comments here"></textarea>
+
+                            <input type="hidden" asp-for="@Model.Comment.ShopId" value="@Model.Id" />
+
+                            <div class="review_submit">
+                                <button type="submit">Submit Review</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="related">
+        <div class="related_container">
+            <div class="related_title">
+                <h5>Related Product</h5>
+            </div>
+
+            <div class="related_product owl-carousel owl-theme">
+                @foreach (var item in ViewBag.ShopOrder)
+                {
+                    <div class="card">
+                        <div class="card_image">
+                            <a asp-controller="shop" asp-action="detail" asp-route-id="@item.Id"><img src="~/assets/image/@item.Image" alt="" width="320" height="320"></a>
+                            <div class="card_buttons">
+                                <span class="button_detail">
+                                    <a target="_blank" asp-controller="shop" asp-action="detail" asp-route-id="@item.Id"><i class="fa fa-light fa-eye"></i></a>
+                                </span>
+                                <span class="button_notify">
+                                    <a asp-controller="shop" asp-action="addbasket" asp-route-id="@item.Id"><i class="fa fa-light fa-bag-shopping"></i></a>
+                                </span>
+                                <span class="button_wishlist">
+                                    <a target="_blank" asp-controller="shop" asp-action="wish" asp-route-id="@item.Id"><i class="fa fa-light fa-heart"></i></a>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="card_desc">
+                            <span class="card_title"><a asp-controller="shop" asp-action="detail" asp-route-id="@item.Id">@item.Title</a></span>
+                            <span class="card_price">$@item.Price</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</main>

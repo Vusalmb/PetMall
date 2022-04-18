@@ -1,0 +1,333 @@
+﻿@inject PetMall.Services.LayoutServices layoutService
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petmall</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    @RenderSection("CSS", required: false)
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+<body>
+    <div id="page_up">
+        <span>@Html.Raw(layoutService.GetSettingDatas().ScrollTopIcon)</span>
+    </div>
+
+    <div class="header_container">
+        <header id="header_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mt-5" id="header_top_social_icons">
+                        <ul>
+                            <li><a href="@layoutService.GetSettingDatas().FacebookUrl" target="_blank">@Html.Raw(layoutService.GetSettingDatas().FacebookIcon)</a></li>
+                            <li><a href="@layoutService.GetSettingDatas().PinterestUrl" target="_blank">@Html.Raw(layoutService.GetSettingDatas().PinterestIcon)</a></li>
+                            <li><a href="@layoutService.GetSettingDatas().InstagramUrl" target="_blank">@Html.Raw(layoutService.GetSettingDatas().InstagramIcon)</a></li>
+                            <li><a href="@layoutService.GetSettingDatas().TweeterUrl" target="_blank">@Html.Raw(layoutService.GetSettingDatas().TweeterIcon)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 mt-5" id="header_top_logo">
+                        <a asp-controller="home" asp-action="index">
+                            <img src="~/assets/image/@layoutService.GetSettingDatas().Logo" alt="petmall_logo">
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 mt-5" id="header_top_setting_icons">
+                        <ul>
+                            <li class="search">@Html.Raw(layoutService.GetSettingDatas().SearchIcon)</li>
+                            <li class="shop">
+                                <span class="shop_icon">@Html.Raw(layoutService.GetSettingDatas().BasketIcon)</span>
+                                <span class="shop_count">@layoutService.ShowBasket().Count</span>
+                            </li>
+                            <li class="setting">@Html.Raw(layoutService.GetSettingDatas().SettingIcon)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <header id="header_bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12" id="header_bottom_nav">
+                        <nav>
+                            <ul>
+                                <li><a asp-controller="home" asp-action="index"><span>Home</span></a></li>
+                                <li><a asp-controller="shop" asp-action="index"><span>Shop</span></a></li>
+                                <li>
+                                    <a href="">
+                                        <span>Pages</span>
+                                        <span><i class="fa-solid fa-arrow-down"></i></span>
+                                    </a>
+                                    <div class="pages">
+                                        <div class="pages_detail">
+                                            <ul>
+                                                <li><h5>Inner Pages</h5></li>
+                                                <li><a asp-controller="about" asp-action="index">About Us</a></li>
+                                                <li><a asp-controller="contact" asp-action="index">Contact Us</a></li>
+                                                <li><a asp-controller="faqs" asp-action="index">FAQs Page</a></li>
+                                                <li><a asp-controller="service" asp-action="index">Term and Services</a></li>
+                                                <li><a asp-controller="policy" asp-action="index">Privacy Policy</a></li>
+                                                <li><a asp-controller="size" asp-action="index">Size Guide</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a asp-controller="blog" asp-action="index">
+                                        <span>Blogs</span>
+                                        <!-- <span><i class="fa-solid fa-arrow-down"></i></span> -->
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <header class="sticky">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-4">
+                    <a asp-controller="home" asp-action="index">
+                        <img src="~/assets/image/@layoutService.GetSettingDatas().Logo" alt="petmall_logo">
+                    </a>
+                </div>
+
+                <div class="col-lg-4">
+                    <nav class="sticky_nav">
+                        <ul>
+                            <li><a asp-controller="home" asp-action="index"><span>Home</span></a></li>
+                            <li><a asp-controller="shop" asp-action="index"><span>Shop</span></a></li>
+                            <li>
+                                <a href="">
+                                    <span>Pages</span>
+                                    <span><i class="fa-solid fa-arrow-down"></i></span>
+                                </a>
+                                <div class="sticky_pages">
+                                    <div class="sticky_pages_detail">
+                                        <ul>
+                                            <li><h5>Inner Pages</h5></li>
+                                            <li><a asp-controller="about" asp-action="index">About Us</a></li>
+                                            <li><a asp-controller="contact" asp-action="index">Contact Us</a></li>
+                                            <li><a asp-controller="faqs" asp-action="index">FAQs Page</a></li>
+                                            <li><a asp-controller="service" asp-action="index">Term and Services</a></li>
+                                            <li><a asp-controller="policy" asp-action="index">Privacy Policy</a></li>
+                                            <li><a asp-controller="size" asp-action="index">Size Guide</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a asp-controller="blog" asp-action="index">
+                                    <span>Blogs</span>
+                                    <!-- <span><i class="fa-solid fa-arrow-down"></i></span> -->
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span>Dogs</span>
+                                    <span><i class="fa-solid fa-arrow-down"></i></span>
+                                </a>
+                                <div class="sticky_dogs">
+                                    <div class="sticky_dogs_detail">
+                                        <ul>
+                                            <li><h5>Dog breed</h5></li>
+                                            <li><a asp-controller="blog" asp-action="index">Chihuahua</a></li>
+                                            <li><a asp-controller="blog" asp-action="index">Shiba Inu</a></li>
+                                            <li><a asp-controller="blog" asp-action="index">Corgi</a></li>
+                                            <li><a asp-controller="blog" asp-action="index">Pug</a></li>
+                                            <li><a asp-controller="blog" asp-action="index">Samoyed</a></li>
+                                            <li><a asp-controller="blog" asp-action="index">Alaska</a></li>
+                                            <li><a asp-controller="blog" asp-action="index">Husky</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-lg-4 d-flex justify-content-end">
+                    <ul class="sticky_setting_icons">
+                        <li class="shop">
+                            <span class="shop_icon">@Html.Raw(layoutService.GetSettingDatas().BasketIcon)</span>
+                            <span class="shop_count">@layoutService.ShowBasket().Count</span>
+                        </li>
+                        <li>@Html.Raw(layoutService.GetSettingDatas().SettingIcon)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+    <div class="basket_fixed_container">
+        <div class="basket_fixed" style="overflow:scroll;">
+            <div class="basket_fixed_exit">
+                <span><i class="fa-solid fa-xmark"></i></span>
+            </div>
+
+            @foreach (var item in layoutService.ShowBasket().BasketItems)
+            {
+                <div class="basket_product">
+                    <img src="~/assets/image/@item.Shop.Image" alt="">
+
+                    <div class="basket_desc">
+                        <span class="basket_title">@item.Shop.Title</span>
+                        <span class="basket_price">$@item.Shop.Price x @item.Count</span>
+                    </div>
+
+                    <div class="basket_remove">
+                        <a asp-controller="shop" asp-action="deletebasketitem" asp-route-id="@item.Shop.Id" data-id="@item.Shop.Id"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
+            }
+
+            <div class="basket_total_price">
+                <span>Total:</span>
+                <span>$@layoutService.ShowBasket().TotalPrice</span>
+            </div>
+
+            <div class="basket_buttons">
+                <button><span>Check Out</span></button>
+                <button><span>View Cart</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="setting_fixed_container">
+        <div class="setting_fixed">
+            <div class="setting_fixed_exit">
+                <span><i class="fa-solid fa-xmark"></i></span>
+            </div>
+
+            <div class="setting_fixed_list">
+                <ul>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li><a style="text-decoration: none; color: black;" asp-controller="account" asp-action="login">Log In</a></li>
+                        <li><a style="text-decoration: none; color: black;" asp-controller="account" asp-action="register">Register Account</a></li>
+                    }
+                    else
+                    {
+                        <li><a style="text-decoration: none; color: black;" asp-controller="account" asp-action="edit">@User.Identity.Name</a></li>
+                        <li><a style="text-decoration: none; color: black;" asp-controller="account" asp-action="logout">Logout</a></li>
+                    }
+                    <li><a style="text-decoration: none; color: black;" asp-controller="order" asp-action="checkout">Check Out</a></li>
+                    <li>My Wishlist</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer_container">
+            <div class="footer_top">
+                <div class="footer_left">
+                    <div class="footer_left_info">
+                        <div class="logo">
+                            <img src="~/assets/image/@layoutService.GetSettingDatas().Logo" alt="image_logo">
+                        </div>
+                        <div class="desc">
+                            <p>@Html.Raw(layoutService.GetSettingDatas().LogoDesc)</p>
+                        </div>
+                    </div>
+
+                    <div class="footer_left_image">
+                        <img src="~/assets/image/@layoutService.GetSettingDatas().LogoImage" alt="">
+                    </div>
+                </div>
+
+                <div class="footer_right">
+                    <div class="footer_right_contact">
+                        <div class="address">
+                            <span>Address:</span>
+                            <span>@Html.Raw(layoutService.GetSettingDatas().Address)</span>
+                        </div>
+                        <div class="phone">
+                            <span>Phone:</span>
+                            <span>@Html.Raw(layoutService.GetSettingDatas().Phone)</span>
+                        </div>
+                        <div class="email">
+                            <span>Email:</span>
+                            <span>@Html.Raw(layoutService.GetSettingDatas().Email)</span>
+                        </div>
+                    </div>
+
+                    <div class="footer_right_line"></div>
+
+                    <div class="footer_right_list">
+                        <div class="shop_list">
+                            <ul>
+                                <li><h5>BLOG</h5></li>
+                                <li><a asp-controller="blog" asp-action="index">Husky</a></li>
+                                <li><a asp-controller="blog" asp-action="index">Corgi</a></li>
+                                <li><a asp-controller="blog" asp-action="index">Chihuahua</a></li>
+                                <li><a asp-controller="blog" asp-action="index">Pug</a></li>
+                                <li><a asp-controller="blog" asp-action="index">Alaska</a></li>
+                                <li><a asp-controller="blog" asp-action="index">Shiba Inu</a></li>
+                            </ul>
+                        </div>
+                        <div class="help_list">
+                            <ul>
+                                <li><h5>HELP</h5></li>
+                                <li><a asp-controller="about" asp-action="index">About Us</a></li>
+                                <li><a asp-controller="service" asp-action="index">Services</a></li>
+                                <li><a asp-controller="contact" asp-action="index">Contact Us</a></li>
+                                <li><a asp-controller="faqs" asp-action="index">FAQs</a></li>
+                                <li><a asp-controller="policy" asp-action="index">Privacy Policy</a></li>
+                                <li><a asp-controller="size" asp-action="index">Size Guide</a></li>
+                            </ul>
+                        </div>
+                        <div class="news_list">
+                            <ul>
+                                <li><h5>NEWSLETTER</h5></li>
+                                <li>
+                                    <p>
+                                        Sign up to our newsletter to get the latest articles, lookbooks & fashion voucher codes direct to your inbox
+                                    </p>
+                                </li>
+                                <li class="input_position">
+                                    <input type="email" placeholder="Your email address">
+                                    <span class="input_button">Send</span>
+                                </li>
+                                <li>
+                                    <span><i class="fa-brands fa-cc-stripe"></i></span>
+                                    <span><i class="fa-brands fa-cc-visa"></i></span>
+                                    <span><i class="fa-brands fa-cc-amex"></i></span>
+                                    <span><i class="fa-brands fa-cc-mastercard"></i></span>
+                                    <span><i class="fa-brands fa-cc-apple-pay"></i></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer_bottom">
+                <span>Copyright © 2021 Vinovathemes. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://kit.fontawesome.com/b6ca518691.js" crossorigin="anonymous"></script>
+    @RenderSection("Scripts", required: false)
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <script src="~/assets/js/script.js"></script>
+</body>
+</html>

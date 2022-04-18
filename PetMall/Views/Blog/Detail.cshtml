@@ -1,0 +1,143 @@
+﻿@model BlogVM
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<main>
+    <section id="search_area">
+        <span class="search_input"><input type="search" placeholder="What are you looking for?"></span>
+        <button>
+            <span class="header_search">Search</span>
+            <span class="header_icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </button>
+    </section>
+
+    <section id="blog_detail">
+        <div class="blog_detail_container">
+            <h4 class="blog_detail_title">Blog Detail</h4>
+            <nav class="blog_detail_active">
+                <ul>
+                    <li><a asp-controller="home" asp-action="index">Home</a></li>
+                    <li><a asp-controller="blog" asp-action="index">News</a></li>
+                    <li>Blog Detail</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section id="blog_detail_info">
+        <div class="blog_detail_info_container">
+            <div class="blog_detail_info_filter">
+                <div class="blog_detail_info_category">
+                    <h5>Categories</h5>
+                    <ul>
+                        <li></li>
+                        <li><a asp-controller="blog" asp-action="detail">Chihuahua</a></li>
+                        <li><a asp-controller="blog" asp-action="detail">Shiba Inu</a></li>
+                        <li><a asp-controller="blog" asp-action="detail">Corgi</a></li>
+                        <li><a asp-controller="blog" asp-action="detail">Pug</a></li>
+                        <li><a asp-controller="blog" asp-action="detail">Samoyed</a></li>
+                    </ul>
+                </div>
+
+                <div class="blog_detail_info_post">
+                    <div class="post_title">
+                        <h5>Recent Post</h5>
+                    </div>
+
+                    @foreach (var item in ViewBag.BlogOrder)
+                    {
+                        <div class="post">
+                            <div class="post_image">
+                                <a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id"><img src="~/assets/image/@item.Image" alt="" width="130" height="100"></a>
+                            </div>
+
+                            <div class="post_desc">
+                                <h6><a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">@item.Title</a></h6>
+                                <span><i class="zmdi zmdi-calendar-note"></i>@item.Date.ToString("dd MMMM yyyy")</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="blog_detail_info_main">
+                <div class="blog_detail_info_section">
+                    <div class="section">
+                        <div class="blog_detail_info_image">
+                            <img src="~/assets/image/@Model.Blog.Image" alt="">
+                        </div>
+
+                        <div class="blog_detail_info_desc">
+                            <h5>@Model.Blog.Title</h5>
+                            <p>
+                                Valentine’s Day 2021 has no choice but to unfold rather differently than usual, so we already know it will be one to
+                                remember. Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua. Ut enim adminim veniam libero lobortis in dictum velit luctus. Donec imperdiet tincidunt interdum.
+                            </p>
+                            <h6>Here, we bring you a look-see:</h6>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim adminim veniam pulvinar dui viverra libero lobortis in dictum velit luctus.
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut iaculis arcu. Proin tincidunt, ipsum nec vehicula
+                                euismod, neque nibh pretium lorem, at ornare risus sem et risus. Curabitur pulvinar dui viverra libero lobortis in
+                                dictum velit luctus. Donec imperdiet tincidunt interdum
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim adminim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut iaculis arcu. Proin
+                                tincidunt, ipsum nec vehicula euismod, neque nibh pretium lorem, at ornare risus sem et risus. Curabitur pulvinar dui
+                                viverra libero lobortis in dictum velit luctus. Donec imperdiet tincidunt interdum
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim adminim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut iaculis arcu. Proin
+                                tincidunt, ipsum nec vehicula euismod neque
+                            </p>
+                        </div>
+
+                        <div class="blog_detail_info_date">
+                            <div class="date">
+                                <span><i class="zmdi zmdi-calendar-note"></i>@Model.Blog.Date.ToString("dd MMMM yyyy")</span>
+                                <span><i class="zmdi zmdi-account"></i>Vinova Theme</span>
+                            </div>
+
+                            <div class="share">
+                                <span><i class="zmdi zmdi-share"></i>Share</span>
+                                <span><i class="zmdi zmdi-print"></i>Print</span>
+                                <div class="share_social">
+                                    <span><a target="_blank" href="@Model.Setting.FacebookUrl">@Html.Raw(Model.Setting.FacebookIcon) Facebook</a></span>
+                                    <span><a target="_blank" href="@Model.Setting.TweeterUrl">@Html.Raw(Model.Setting.TweeterIcon) Tweeter</a></span>
+                                    <span><a target="_blank" href="@Model.Setting.PinterestUrl">@Html.Raw(Model.Setting.PinterestIcon) Pinterest</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog_detail_info_related">
+                    <div class="related_title">
+                        <h4>Related News</h4>
+                    </div>
+
+                    <div class="related_info owl-carousel owl-theme">
+                        @foreach (var item in ViewBag.BlogOrder)
+                        {
+                            <div class="blog">
+                                <div class="related_image">
+                                    <a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id"><img src="~/assets/image/@item.Image" alt=""></a>
+                                </div>
+
+                                <div class="related_desc">
+                                    <h6><a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">@item.Title</a></h6>
+                                    <p>@Html.Raw(item.Desc)</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

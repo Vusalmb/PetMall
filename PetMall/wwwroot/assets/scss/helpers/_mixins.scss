@@ -1,0 +1,13 @@
+@mixin keyframe($slide){
+    @keyframes #{$slide} {
+        
+    }
+}
+
+@mixin animation ($delay: null, $duration: null, $animation: null, $direction: forward, $fillmode: fowards) {
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $animation;
+    animation-direction: $direction;
+    animation-fill-mode: $fillmode;
+}

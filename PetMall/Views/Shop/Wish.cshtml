@@ -1,0 +1,77 @@
+﻿@model Shop
+@{
+    ViewData["Title"] = "Wish";
+}
+
+<main>
+    <section id="search_area">
+        <span class="search_input"><input type="search" placeholder="What are you looking for?"></span>
+        <button>
+            <span class="header_search">Search</span>
+            <span class="header_icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </button>
+    </section>
+
+    <section id="wishlist">
+        <div class="wishlist_container">
+            <h4 class="wishlist_title">Page Wishlist</h4>
+            <nav class="wishlist_active">
+                <ul>
+                    <li><a href="../Home page/home.html">Home</a></li>
+                    <li>Page Wishlist</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section id="wishlist_sale">
+        <div class="sale_container">
+            <div class="wishlist_title">
+                <h4>Wish List</h4>
+            </div>
+
+            <div class="wishlist_summary">
+                <div class="summary">
+                    <span class="summary_icon"><i class="zmdi zmdi-favorite"></i></span>
+                    <span class="summary_title">Your Favorite Products</span>
+                </div>
+                <div class="summary">
+                    <span class="summary_icon"><i class="fa fa-usd"></i></span>
+                    <span class="summary_title">Price</span>
+                </div>
+                <div class="summary">
+                    <span class="summary_icon"><i class="fa fa-trash-o"></i></span>
+                    <span class="summary_title">Remove</span>
+                </div>
+                <div class="summary">
+                    <span class="summary_icon"><i class="zmdi zmdi-shopping-cart"></i></span>
+                    <span class="summary_title">Add To Cart</span>
+                </div>
+            </div>
+
+            <div class="wishlist_sale_desc">
+                <div class="product">
+                    <div class="product_image">
+                        <img src="~/assets/image/@Model.Image" alt="" width="150" height="150">
+                    </div>
+
+                    <div class="product_name">
+                        <span>@Model.Title</span>
+                    </div>
+                </div>
+
+                <div class="product_price">
+                    <span>$@Model.Price</span>
+                </div>
+
+                <div class="product_remove">
+                    <button><a style="text-decoration: none; color: black" asp-controller="shop" asp-action="deletebasketitem" asp-route-id="@Model.Id" data-id="@Model.Id"><i class="fa fa-trash-o"></i>Remove</a></button>
+                </div>
+
+                <div class="product_add">
+                    <a style="text-decoration: none; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 200px; padding: 10px; border: 1px solid black; background-color: black; color: white;" onMouseOver="this.style.backgroundColor='orange'" onMouseOut="this.style.backgroundColor='black'" asp-controller="shop" asp-action="addbasket" asp-route-id="@Model.Id"><i class="zmdi zmdi-shopping-cart"></i>Add To Cart</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

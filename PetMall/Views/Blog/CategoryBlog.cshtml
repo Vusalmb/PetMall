@@ -1,0 +1,55 @@
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "CategoryBlog";
+}
+
+<main>
+    <section id="search_area">
+        <span class="search_input"><input type="search" placeholder="What are you looking for?"></span>
+        <button>
+            <span class="header_search">Search</span>
+            <span class="header_icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </button>
+    </section>
+
+    <section id="blog">
+        <div class="blog_container">
+            <h4 class="blog_title">News</h4>
+            <nav class="blog_active">
+                <ul>
+                    <li><a asp-controller="home" asp-action="index">Home</a></li>
+                    <li><a asp-controller="blog" asp-action="index">News</a></li>
+                    <li>CategoryBlog</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section id="news">
+        <div class="news_container">
+            <div class="news_main">
+                <div class="news_section">
+                    @*@foreach (var item in ViewBag.CategoryOrder)
+                    {
+                        <div class="section">
+                            <div class="news_image">
+                                <a target="_blank" asp-controller="blog" asp-action="detail" asp-route-id="@item.Id"><img src="~/assets/image/@item.Image" alt=""></a>
+                            </div>
+
+                            <div class="news_desc">
+                                <h5><a target="_blank" asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">@item.Title</a></h5>
+                                <div class="news_date">
+                                    <span><i class="zmdi zmdi-calendar-note"></i>@item.Date.ToString("dd MMMM yyyy")</span>
+                                    <span>|</span>
+                                    <span><i class="zmdi zmdi-account"></i>Vinova Theme</span>
+                                </div>
+                                <p>@Html.Raw(item.Desc)</p>
+                                <button><a target="_blank" asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">Read More</a></button>
+                            </div>
+                        </div>
+                      }*@
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

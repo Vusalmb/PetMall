@@ -1,0 +1,132 @@
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+    <section id="search_area">
+        <form asp-controller="blog" asp-action="index">
+            <span class="search_input"><input type="text" name="search" placeholder="What are you looking for?"></span>
+            <button style="background-color: transparent" type="submit">
+                <span class="header_search">Search</span>
+                <a style="text-decoration: none; color: black;" class="header_icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+            </button>
+        </form>
+    </section>
+
+    <section id="blog">
+        <div class="blog_container">
+            <h4 class="blog_title">News</h4>
+            <nav class="blog_active">
+                <ul>
+                    <li><a asp-controller="home" asp-action="index">Home</a></li>
+                    <li>News</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section id="news">
+        <div class="news_container">
+            <div class="news_filter">
+                <div class="news_category">
+                    <h5>Categories</h5>
+                    <ul>
+                        <li><a asp-controller="blog" asp-action="detail">Chihuahua</a></li>
+                        <li><a asp-controller="blog" asp-action="detail">Shiba Inu</a></li>
+                        <li><a asp-controller="blog" asp-action="detail">Corgi</a></li>
+                        <li><a asp-controller="blog" asp-action="detail">Pug</a></li>
+                        <li><a asp-controller="blog" asp-action="detail">Samoyed</a></li>
+                    </ul>
+                </div>
+
+                <div class="news_post">
+                    <div class="post_title">
+                        <h5>Recent Post</h5>
+                    </div>
+
+                    @foreach (var item in ViewBag.BlogOrder)
+                    {
+                        <div class="post">
+                            <div class="post_image">
+                                <a asp-controller="blog" asp-action="detail"><img src="~/assets/image/@item.Image" alt="" width="130" height="100"></a>
+                            </div>
+
+                            <div class="post_desc">
+                                <h6><a asp-controller="blog" asp-action="detail">@item.Title</a></h6>
+                                <span><i class="zmdi zmdi-calendar-note"></i>@item.Date.ToString("dd MMMM yyyy")</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="news_main">
+                <div class="news_title">
+                    <h3>News</h3>
+                </div>
+
+                <div class="news_section">
+                    @foreach (Blog blogs in Model)
+                    {
+                        <div class="section">
+                            <div class="news_image">
+                                <a target="_blank" asp-controller="blog" asp-action="detail" asp-route-id="@blogs.Id"><img src="~/assets/image/@blogs.Image" alt=""></a>
+                            </div>
+
+                            <div class="news_desc">
+                                <h5><a target="_blank" asp-controller="blog" asp-action="detail" asp-route-id="@blogs.Id">@blogs.Title</a></h5>
+                                <div class="news_date">
+                                    <span><i class="zmdi zmdi-calendar-note"></i>@blogs.Date.ToString("dd MMMM yyyy")</span>
+                                    <span>|</span>
+                                    <span><i class="zmdi zmdi-account"></i>Vinova Theme</span>
+                                </div>
+                                <p>@Html.Raw(blogs.Desc)</p>
+                                <button><a target="_blank" asp-controller="blog" asp-action="detail" asp-route-id="@blogs.Id">Read More</a></button>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="news_pagination">
+                    <nav aria-label="...">
+                        <ul class="pagination d-flex justify-content-center">
+                            @if (ViewBag.CurrentPage == 1)
+                            {
+                                <li class="page-item disabled">
+                                    <a class="page-link" asp-controller="blog" asp-action="index" asp-route-page="@(ViewBag.CurrentPage-1)">Previous</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" asp-controller="blog" asp-action="index" asp-route-page="@(ViewBag.CurrentPage-1)">Previous</a>
+                                </li>
+                            }
+
+                            @for (int i = 1; i <= ViewBag.TotalPage; i++)
+                            {
+                                <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")" style="@(ViewBag.CurrentPage == i ? "pointer-events: none;" : "")">
+                                    <a class="page-link" asp-controller="blog" asp-action="index" asp-route-page="@i">@i</a>
+                                </li>
+                            }
+
+                            @if (ViewBag.CurrentPage == ViewBag.TotalPage)
+                            {
+                                <li class="page-item disabled">
+                                    <a class="page-link" asp-controller="blog" asp-action="index" asp-route-page="@(ViewBag.CurrentPage + 1)">Next</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" asp-controller="blog" asp-action="index" asp-route-page="@(ViewBag.CurrentPage + 1)">Next</a>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

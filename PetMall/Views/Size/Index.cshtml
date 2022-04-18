@@ -1,0 +1,357 @@
+﻿@model SizeVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+    <section id="search_area">
+        <span class="search_input"><input type="search" placeholder="What are you looking for?"></span>
+        <button>
+            <span class="header_search">Search</span>
+            <span class="header_icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </button>
+    </section>
+
+    <section id="size">
+        <div class="size_container">
+            <h4 class="size_title">Page Size Guide</h4>
+            <nav class="size_active">
+                <ul>
+                    <li><a asp-controller="home" asp-action="index">Home</a></li>
+                    <li>Page Size Guide</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section id="pet_size">
+        <div class="pet_size_container">
+            <div class="pet_size_title">
+                <h4>Size Guide</h4>
+                <p>
+                    Please note this is for reference only. Please refer to the product description for a more accurate size guidance.
+                </p>
+            </div>
+
+            <div class="pet_size_section">
+                <div class="pet_size_tab_header">
+                    <ul>
+                        <li data-id="women" class="active">Women's Sizes</li>
+                        <li data-id="men">Men's Sizes</li>
+                        <li data-id="kid">Kid's Sizes</li>
+                    </ul>
+                </div>
+
+                <div class="pet_size_tab_section">
+                    <div class="tab1 women">
+                        <h5>Menswear Body Measurements</h5>
+
+                        <table class="women_body_size">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>XS</th>
+                                    <th>S</th>
+                                    <th>M</th>
+                                    <th>L</th>
+                                    <th>XL</th>
+                                    <th>XXL</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th>Australian size</th>
+                                    <td>8</td>
+                                    <td>10</td>
+                                    <td>12</td>
+                                    <td>14</td>
+                                    <td>16</td>
+                                    <td>18</td>
+                                </tr>
+                                <tr>
+                                    <th>UK Size</th>
+                                    <td>8</td>
+                                    <td>10</td>
+                                    <td>12</td>
+                                    <td>14</td>
+                                    <td>16</td>
+                                    <td>18</td>
+                                </tr>
+                                <tr>
+                                    <th>European Size</th>
+                                    <td>36</td>
+                                    <td>38</td>
+                                    <td>40</td>
+                                    <td>42</td>
+                                    <td>44</td>
+                                    <td>46</td>
+                                </tr>
+                                <tr>
+                                    <th>European Size</th>
+                                    <td>4</td>
+                                    <td>6</td>
+                                    <td>8</td>
+                                    <td>10</td>
+                                    <td>12</td>
+                                    <td>14</td>
+                                </tr>
+                                <tr>
+                                    <th>Bust (cm)</th>
+                                    <td>81</td>
+                                    <td>86</td>
+                                    <td>91</td>
+                                    <td>96</td>
+                                    <td>103</td>
+                                    <td>110</td>
+                                </tr>
+                                <tr>
+                                    <th>Waist (cm)</th>
+                                    <td>64</td>
+                                    <td>69</td>
+                                    <td>74</td>
+                                    <td>79</td>
+                                    <td>86</td>
+                                    <td>93</td>
+                                </tr>
+                                <tr>
+                                    <th>Hip (cm)</th>
+                                    <td>92</td>
+                                    <td>97</td>
+                                    <td>102</td>
+                                    <td>107</td>
+                                    <td>114</td>
+                                    <td>121</td>
+                                </tr>
+                                <tr>
+                                    <th>Inseam-pant (cm)</th>
+                                    <td>8</td>
+                                    <td>10</td>
+                                    <td>12</td>
+                                    <td>14</td>
+                                    <td>16</td>
+                                    <td>18</td>
+                                </tr>
+                                <tr>
+                                    <th>Inseam - 3/4 pant (cm)</th>
+                                    <td>51.5</td>
+                                    <td>51.5</td>
+                                    <td>51.5</td>
+                                    <td>51.5</td>
+                                    <td>51.5</td>
+                                    <td>51.5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h5>Womens Footwear</h5>
+
+                        <table class="women_foot_size">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>S</th>
+                                    <th>M</th>
+                                    <th>L</th>
+                                    <th>XL</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th>Australian size</th>
+                                    <td>5-6</td>
+                                    <td>7-8</td>
+                                    <td>9-10</td>
+                                    <td>11+</td>
+                                </tr>
+                                <tr>
+                                    <th>UK Size</th>
+                                    <td>3-4</td>
+                                    <td>5-6</td>
+                                    <td>7-8</td>
+                                    <td>9+</td>
+                                </tr>
+                                <tr>
+                                    <th>European Size</th>
+                                    <td>36-37</td>
+                                    <td>38-39</td>
+                                    <td>40-41</td>
+                                    <td>42+</td>
+                                </tr>
+                                <tr>
+                                    <th>US Size</th>
+                                    <td>5-6</td>
+                                    <td>7-8</td>
+                                    <td>9-10</td>
+                                    <td>11+</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab2 men">
+                        <h5>Menswear Body Measurements</h5>
+
+                        <table class="men_body_size">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>XS</th>
+                                    <th>S</th>
+                                    <th>M</th>
+                                    <th>L</th>
+                                    <th>XL</th>
+                                    <th>XXL</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th>Australian size</th>
+                                    <td>8</td>
+                                    <td>10</td>
+                                    <td>12</td>
+                                    <td>14</td>
+                                    <td>16</td>
+                                    <td>18</td>
+                                </tr>
+                                <tr>
+                                    <th>UK Size</th>
+                                    <td>8</td>
+                                    <td>10</td>
+                                    <td>12</td>
+                                    <td>14</td>
+                                    <td>16</td>
+                                    <td>18</td>
+                                </tr>
+                                <tr>
+                                    <th>European Size</th>
+                                    <td>36</td>
+                                    <td>38</td>
+                                    <td>40</td>
+                                    <td>42</td>
+                                    <td>44</td>
+                                    <td>46</td>
+                                </tr>
+                                <tr>
+                                    <th>European Size</th>
+                                    <td>4</td>
+                                    <td>6</td>
+                                    <td>8</td>
+                                    <td>10</td>
+                                    <td>12</td>
+                                    <td>14</td>
+                                </tr>
+                                <tr>
+                                    <th>Bust (cm)</th>
+                                    <td>81</td>
+                                    <td>86</td>
+                                    <td>91</td>
+                                    <td>96</td>
+                                    <td>103</td>
+                                    <td>110</td>
+                                </tr>
+                                <tr>
+                                    <th>Waist (cm)</th>
+                                    <td>64</td>
+                                    <td>69</td>
+                                    <td>74</td>
+                                    <td>79</td>
+                                    <td>86</td>
+                                    <td>93</td>
+                                </tr>
+                                <tr>
+                                    <th>Hip (cm)</th>
+                                    <td>92</td>
+                                    <td>97</td>
+                                    <td>102</td>
+                                    <td>107</td>
+                                    <td>114</td>
+                                    <td>121</td>
+                                </tr>
+                                <tr>
+                                    <th>Inseam-pant (cm)</th>
+                                    <td>8</td>
+                                    <td>10</td>
+                                    <td>12</td>
+                                    <td>14</td>
+                                    <td>16</td>
+                                    <td>18</td>
+                                </tr>
+                                <tr>
+                                    <th>Inseam - 3/4 pant (cm)</th>
+                                    <td>51.5</td>
+                                    <td>51.5</td>
+                                    <td>51.5</td>
+                                    <td>51.5</td>
+                                    <td>51.5</td>
+                                    <td>51.5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab3 kid">
+                        <h5>Kids Footwear</h5>
+
+                        <table class="kid_foot_size">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>S</th>
+                                    <th>M</th>
+                                    <th>L</th>
+                                    <th>XL</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th>Australian size</th>
+                                    <td>5-6</td>
+                                    <td>7-8</td>
+                                    <td>9-10</td>
+                                    <td>11+</td>
+                                </tr>
+                                <tr>
+                                    <th>UK Size</th>
+                                    <td>3-4</td>
+                                    <td>5-6</td>
+                                    <td>7-8</td>
+                                    <td>9+</td>
+                                </tr>
+                                <tr>
+                                    <th>European Size</th>
+                                    <td>36-37</td>
+                                    <td>38-39</td>
+                                    <td>40-41</td>
+                                    <td>42+</td>
+                                </tr>
+                                <tr>
+                                    <th>US Size</th>
+                                    <td>5-6</td>
+                                    <td>7-8</td>
+                                    <td>9-10</td>
+                                    <td>11+</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pet_size_about">
+                <ol>
+                    @foreach (SizeFeature feature in Model.SizeFeatures)
+                    {
+                        <li>
+                            <h6>@feature.Name</h6>
+                            <span>@feature.Desc</span>
+                        </li>
+                    }
+                </ol>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,92 @@
+﻿@model ContactVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+    <section id="search_area">
+        <span class="search_input"><input type="search" placeholder="What are you looking for?"></span>
+        <button>
+            <span class="header_search">Search</span>
+            <span class="header_icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </button>
+    </section>
+
+    <section id="contact">
+        <div class="contact_container">
+            <h4 class="contact_title">Page Contact Us</h4>
+            <nav class="contact_active">
+                <ul>
+                    <li><a asp-controller="home" asp-action="index">Home</a></li>
+                    <li>Page Contact Us</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section id="contact_info">
+        <div class="contact_info_container">
+            <div class="call">
+                <div><h6>CALL US</h6></div>
+                <div><p>Send us a text & an ambassador will respond when available.</p></div>
+                <div><span>@Model.Setting.Phone</span></div>
+            </div>
+            <div class="address">
+                <div><h6>ADDRESS</h6></div>
+                <div><p>@Html.Raw(Model.Setting.Address)</p></div>
+                <div><span>@Model.Setting.Email</span></div>
+            </div>
+            <div class="open">
+                <div><h6>WE'RE OPEN</h6></div>
+                <div><p>Our store has re-opened for shopping, exchanges</p></div>
+                <div><span>@Model.Setting.OpenTime</span></div>
+            </div>
+            <div class="social">
+                <div><h6>SOCIAL MEDIA</h6></div>
+                <div class="social_icons">
+                    <span><a target="_blank" href="@Model.Setting.FacebookUrl">@Html.Raw(Model.Setting.FacebookIcon)</a></span>
+                    <span><a target="_blank" href="@Model.Setting.PinterestUrl">@Html.Raw(Model.Setting.PinterestIcon)</a></span>
+                    <span><a target="_blank" href="@Model.Setting.InstagramUrl">@Html.Raw(Model.Setting.InstagramIcon)</a></span>
+                    <span><a target="_blank" href="@Model.Setting.TweeterUrl">@Html.Raw(Model.Setting.TweeterIcon)</a></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact_location">
+        <div class="contact_location_container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m19!1m8!1m3!1d11547.914876103985!2d-79.3816667!3d43.6486111!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x882b34d2a57d767f%3A0x935ab2eb9fd5fb31!2sFirst%20Canadian%20Place%20100%20King%20St%20W%20Toronto%2C%20ON%20M5X%201A9%20Canada!3m2!1d43.6486111!2d-79.3816667!5e0!3m2!1sen!2s!4v1647531228897!5m2!1sen!2s"
+                    width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <section id="contact_message">
+        <div class="contact_message_container">
+            <div class="contact_message_title">
+                <h2>GET IN TOUCH</h2>
+            </div>
+
+            <div class="contact_message_form">
+                <form asp-action="message" asp-controller="contact" method="post">
+                    <div class="form_text">
+                        <input type="text" placeholder="Your Name">
+                        <input type="email" placeholder="Your Email">
+                    </div>
+
+                    <div class="form_phone">
+                        <input type="text" placeholder="Phone Number">
+                    </div>
+
+                    <div class="form_message">
+                        <textarea name="" id="text" cols="30" rows="10" placeholder="Message"></textarea>
+                    </div>
+
+                    <div class="form_submit">
+                        <button type="submit"><span>Send Message</span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>

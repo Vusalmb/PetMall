@@ -1,0 +1,79 @@
+﻿@model AboutVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+    <section id="search_area">
+        <span class="search_input"><input type="search" placeholder="What are you looking for?"></span>
+        <button>
+            <span class="header_search">Search</span>
+            <span class="header_icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </button>
+    </section>
+
+    <section id="about">
+        <div class="about_container">
+            <h4 class="about_title">Page About Us</h4>
+            <nav class="about_active">
+                <ul>
+                    <li><a asp-controller="home" asp-action="index">Home</a></li>
+                    <li>Page About Us</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section id="about_info">
+        <div class="about_info_container">
+            <div class="our_company">
+                <div class="company_container">
+                    <h5>Our Company</h5>
+                    @Html.Raw(Model.Setting.OurCompany)
+                    <div class="block_quote">
+                        <span><i class="fa-solid fa-quote-left"></i></span>
+                        <p>
+                            @Model.Setting.CompanyQuote
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="our_team">
+                <div class="team_container">
+                    <h5>Our Team</h5>
+                    @Html.Raw(Model.Setting.OurTeam)
+                </div>
+            </div>
+
+            <div class="our_employees">
+                @foreach (Employee employees in Model.Employees)
+                {
+                    <div class="employee1">
+                        <div class="item1">
+                            <h6>@employees.Name</h6>
+                            <span>@employees.Specialty</span>
+                            <p>@employees.Desc</p>
+                        </div>
+                        <div class="item2">
+                            <span>
+                                <i class="fa-solid fa-phone"></i>
+                                @employees.Phone
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-envelope"></i>
+                                @employees.Email
+                            </span>
+                        </div>
+                        <div class="item3">
+                            <span><a target="_blank" href="@employees.FacebookUrl">@Html.Raw(employees.FacebookIcon)</a></span>
+                            <span><a target="_blank" href="@employees.TweeterUrl">@Html.Raw(employees.TweeterIcon)</a></span>
+                            <span><a target="_blank" href="@employees.PinterestUrl">@Html.Raw(employees.PinterestIcon)</a></span>
+                            <span><a target="_blank" href="@employees.InstagramUrl">@Html.Raw(employees.InstagramIcon)</a></span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</main>
