@@ -845,7 +845,6 @@
                 font-size: 20px;
                 color:#130f26;
                 margin-top: 20px;
-                cursor: pointer;
 
                 &:hover{
                     color: #ffcf62;
@@ -855,7 +854,6 @@
             .img_item{
                 overflow: hidden;
                 border-radius: 50%;
-                cursor: pointer;
 
                 img{
                     transition-duration: 1s;
@@ -1658,39 +1656,12 @@
         .basket_total_price{
             display: flex;
             justify-content: space-between;
-            padding: 200px 10px 0 10px;
+            margin-left: 20px;
+            margin-right: 20px;
     
             span{
                 font-weight: bold;
                 font-size: 25px;
-            }
-        }
-    
-        .basket_buttons{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-    
-            button{
-                width: 90%;
-                border-radius: 20px;
-                margin-bottom: 20px;
-                background-color: orange;
-                opacity: 0.6;
-    
-                span{
-                    display: inline-block;
-                    padding: 10px;
-                    color: white;
-                    font-family: Montserrat, sans-serif;
-                    font-weight: bold;
-                }
-
-                &:hover{
-                    background-color: #ff8c00;
-                }
             }
         }
     }
@@ -3065,6 +3036,10 @@ footer{
                             font-family: Montserrat, sans-serif;
                             opacity: 0.6;
                         }
+                    }
+
+                    .active{
+                        display: block;
                     }
                 }
             }

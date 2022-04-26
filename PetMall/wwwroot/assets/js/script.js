@@ -100,20 +100,13 @@ $(document).ready(function(){
     // FAQs accordion
 
     $(".accordion_title").click(function(){
-        $(this).siblings('.accordion_title').children('i').removeClass('fa-minus').addClass('fa-plus');
-        $(this).siblings('.accordion_desc').not($(this).next()).slideUp();
-        $(this).children('i').toggleClass('fa-plus').toggleClass('fa-minus');
-        $(this).next().slideToggle();
-        $(this).siblings('.active').removeClass('active');
-        $(this).toggleClass('active');
 
-        //$(".accordion_desc").slideUp();
-        //// $(this).next(".accordion_desc").slideToggle("slow");
-        //$(this).next(".accordion_desc").slideDown();
-        
-        
-        //$(".accordion_title span i").removeClass("fa-minus").addClass("fa-plus");
-        //$(this).find("i").removeClass("fa-plus").addClass("fa-minus");
+        $(".accordion_desc").not($(this).next(".accordion_desc")).slideUp();
+        //$(this).next(".accordion_desc").slideToggle("slow");
+        $(this).next(".accordion_desc").slideToggle();
+
+        $(".accordion_title span i").removeClass("fa-minus").addClass("fa-plus");
+        $(this).find("i").removeClass("fa-plus").addClass("fa-minus");
     })
 
      // owl carousel
@@ -313,9 +306,10 @@ $(document).ready(function(){
 
     // remove basket
 
-    //$(".basket_remove").click(function () {
-    //    $(".basket_product").css({ "display": "none" });
-    //})
+    $(".basket_remove").click(function(){
+        $(".basket_product").css({"display":"none"});
+        $(".basket_total_price:last-child").text("$0");
+    })
 })
 
 // home slide

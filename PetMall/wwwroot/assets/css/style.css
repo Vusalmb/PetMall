@@ -1015,7 +1015,6 @@
   font-size: 20px;
   color: #130f26;
   margin-top: 20px;
-  cursor: pointer;
 }
 
 #dogs_img #dogs_img_container .dogs_img_items .text_item:hover {
@@ -1025,7 +1024,6 @@
 #dogs_img #dogs_img_container .dogs_img_items .img_item {
   overflow: hidden;
   border-radius: 50%;
-  cursor: pointer;
 }
 
 #dogs_img #dogs_img_container .dogs_img_items .img_item img {
@@ -2076,49 +2074,13 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 200px 10px 0 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .basket_fixed_container .basket_fixed .basket_total_price span {
   font-weight: bold;
   font-size: 25px;
-}
-
-.basket_fixed_container .basket_fixed .basket_buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 50px;
-}
-
-.basket_fixed_container .basket_fixed .basket_buttons button {
-  width: 90%;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  background-color: orange;
-  opacity: 0.6;
-}
-
-.basket_fixed_container .basket_fixed .basket_buttons button span {
-  display: inline-block;
-  padding: 10px;
-  color: white;
-  font-family: Montserrat, sans-serif;
-  font-weight: bold;
-}
-
-.basket_fixed_container .basket_fixed .basket_buttons button:hover {
-  background-color: #ff8c00;
 }
 
 .setting_fixed_container {
@@ -3787,6 +3749,10 @@ footer .footer_container .footer_bottom span {
   padding: 0 20px;
   font-family: Montserrat, sans-serif;
   opacity: 0.6;
+}
+
+#faqs_info .faqs_info_container .accordion_section .accordion .accordion_info .active {
+  display: block;
 }
 
 #size {
