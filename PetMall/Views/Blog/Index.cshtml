@@ -49,11 +49,11 @@
                     {
                         <div class="post">
                             <div class="post_image">
-                                <a asp-controller="blog" asp-action="detail"><img src="~/assets/image/@item.Image" alt="" width="130" height="100"></a>
+                                <a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id"><img src="~/assets/image/@item.Image" alt="" width="130" height="100"></a>
                             </div>
 
                             <div class="post_desc">
-                                <h6><a asp-controller="blog" asp-action="detail">@item.Title</a></h6>
+                                <h6><a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">@item.Title</a></h6>
                                 <span><i class="zmdi zmdi-calendar-note"></i>@item.Date.ToString("dd MMMM yyyy")</span>
                             </div>
                         </div>

@@ -272,35 +272,17 @@
                 <div class="tab4 review">
                     <div class="customer">
                         <div class="customer_title">
-                            <h3>Customer Reviews (@Model.Comments.Count())</h3>
+                            <h3>Customer Reviews (0)</h3>
                         </div>
 
                         <div class="customer_summary">
-                            @if (Model.Comments == null)
-                            {
                                 <span class="summary1">No reviews yet</span>
                                 <span class="summary2">Write a review</span>
-                            }
-                            else
-                            {
-                                @foreach (Comment comment in Model.Comments.Where(c => c.IsAccess == true).OrderBy(c => c.CreateDate))
-                                {
-                                    @if (comment.AppUser.UserName == User.Identity.Name)
-                                    {
-                                        <span>@comment.AppUser.FullName</span> <span>@comment.CreateDate.ToString("dd   MMMM yyyy HH:mm")</span>
-                                        <p>@comment.Text</p>
-                                        <a asp-action="DeleteComment" asp-route-id="@comment.Id" calss="text-danger" style="text-decoration: none; color: black;">Delete</a>
-                                    }
-
-                                }
-
-                                <span class="summary2">Write a review</span>
-                            }
                         </div>
                     </div>
 
                     <div class="form_container">
-                        <form asp-controller="shop" asp-action="addcomment" method="post">
+                        <form action="" method="post">
                             <label for="name">Name</label>
                             <input type="text" id="name" placeholder="Enter your Name">
 
@@ -321,13 +303,11 @@
                                 <input type="radio" id="radio5">
                             </div>
 
-                            <label asp-for="@Model.Comment.Title">Review Title</label>
-                            <input type="text" asp-for="@Model.Comment.Title">
+                            <label for="review">Review Title</label>
+                            <input type="text" id="review">
 
-                            <label asp-for="@Model.Comment.Text">Body of Review (1500)</label>
-                            <textarea asp-for="@Model.Comment.Text" cols="30" rows="10" placeholder="Write your comments here"></textarea>
-
-                            <input type="hidden" asp-for="@Model.Comment.ShopId" value="@Model.Id" />
+                            <label for="">Body of Review (1500)</label>
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Write your comments here"></textarea>
 
                             <div class="review_submit">
                                 <button type="submit">Submit Review</button>
