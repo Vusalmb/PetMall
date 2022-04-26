@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace PetMall.Controllers
 {
-    [Authorize(Roles = "Member")]
+    [Authorize(Roles = "SuperAdmin")]
     public class OrderController : Controller
     {
         private readonly AppDbContext _context;

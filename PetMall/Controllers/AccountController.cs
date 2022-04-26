@@ -63,6 +63,8 @@ namespace PetMall.Controllers
 
                 return View();
             }
+            await _signInManager.SignInAsync(user, isPersistent: false);
+            await _userManager.AddToRoleAsync(user, "Member");
 
             string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             string link = Url.Action(nameof(VerifyEmail), "Account", new { email = user.Email,token }, Request.Scheme, Request.Host.ToString());
